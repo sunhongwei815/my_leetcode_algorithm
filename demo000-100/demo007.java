@@ -1,3 +1,13 @@
+package demo001_100;
+
+/**
+ * @author:Sun Hongwei
+ * @2020/2/12 下午7:57
+ * File Description：整数反转:给出一个 32 位的有符号整数，你需要将这个整数中每位上的数字进行反转。
+ *
+ *
+ * 设置个数组依次保存各位数字，再反过来加上
+ */
 public class demo007 {
     public static int reverse(int x){
         int flag=1,p=0;
@@ -27,4 +37,3 @@ public class demo007 {
         System.out.println(result);
     }
 }
-
