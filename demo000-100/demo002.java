@@ -1,11 +1,15 @@
+package demo001_100;
+
+/**
+ * @author:Sun Hongwei
+ * @2020/2/12 下午3:44
+ * File Description：两数相加:给出两个 非空 的链表用来表示两个非负的整数。
+ *              其中，它们各自的位数是按照 逆序 的方式存储的，并且它们的每个节点只能存储一位数字。
+ *
+ *  按照加法规则，链表依次向后相加即可
+ *
+ */
 public class demo002 {
-    public static class ListNode {
-        int val;
-        ListNode next;
-        ListNode(int x) {
-            val = x;
-        }
-    }
     public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode result=new ListNode(0);
         ListNode result2=result;
@@ -15,7 +19,7 @@ public class demo002 {
             y=(l2!=null)?l2.val:0;
             temp=x+y+carry;
             System.out.println(temp);
-            if(temp>=10){
+            if(temp>=10){  //考虑有进位的时候
                 temp-=10;
                 carry=1;
             }else{
