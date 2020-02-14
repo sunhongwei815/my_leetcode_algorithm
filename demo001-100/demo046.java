@@ -11,19 +11,18 @@ import java.util.List;
  *  回朔法：递归
  */
 public class demo046 {
-
+    List<List<Integer>> result=new ArrayList<>();
     public List<List<Integer>> permute(int[] nums) {
-        List<List<Integer>> result=new ArrayList<>();
         int[] visited=new int[nums.length];   //visited:记录数组中元素是否被访问过
-        backtrack(result,nums,new ArrayList<Integer>(),visited);
+        backtrack(nums,new ArrayList<Integer>(),visited);
         return result;
 
     }
 
-    public void backtrack(List<List<Integer>> res,int[] nums,ArrayList<Integer> temp,int[] visited){
+    public void backtrack(int[] nums, ArrayList<Integer> temp,int[] visited){
         //填满一种组合后，放进ArrayLists
         if(temp.size()==nums.length){
-            res.add(new ArrayList<>(temp));
+            result.add(new ArrayList<>(temp));
             return;
         }
          //回溯
@@ -33,7 +32,7 @@ public class demo046 {
             }
             visited[i]=1;   //如果没遍历过这个元素，就把它放进去，继续遍历
             temp.add(nums[i]);
-            backtrack(res,nums,temp,visited);
+            backtrack(nums,temp,visited);
 
             visited[i]=0;  //将该元素弹出，换另一个元素进去
             temp.remove(temp.size()-1);
