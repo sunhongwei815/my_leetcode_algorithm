@@ -1,0 +1,62 @@
+demo596
+
+有一个courses 表 ，有: student (学生) 和 class (课程)。
+
+请列出所有超过或等于5名学生的课。
+
+例如,表:
+
++---------+------------+
+| student | class      |
++---------+------------+
+| A       | Math       |
+| B       | English    |
+| C       | Math       |
+| D       | Biology    |
+| E       | Math       |
+| F       | Computer   |
+| G       | Math       |
+| H       | Math       |
+| I       | Math       |
++---------+------------+
+应该输出:
+
++---------+
+| class   |
++---------+
+| Math    |
++---------+
+Note:
+学生在每个课中不应被重复计算。
+
+_______________________________________________________________
+用distinct 防止学生被重复计算
+
+
+1.用Having筛选：
+SELECT class
+FROM courses
+GROUP BY class
+HAVING COUNT(DISTINCT student)>=5;
+
+2.构建临时表：
+SELECT class
+FROM
+(  //临时表
+   SELECT class,COUNT(DISTINCT student) as num
+   FROM courses
+   GROUP BY class
+)as classnum
+WHERE num>1;
+
+
+
+
+
+
+
+
+
+
+
+

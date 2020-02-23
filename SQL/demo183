@@ -1,0 +1,60 @@
+demo183
+
+某网站包含两个表，Customers 表和 Orders 表。编写一个 SQL 查询，找出所有从不订购任何东西的客户。
+
+Customers 表：
+
++----+-------+
+| Id | Name  |
++----+-------+
+| 1  | Joe   |
+| 2  | Henry |
+| 3  | Sam   |
+| 4  | Max   |
++----+-------+
+Orders 表：
+
++----+------------+
+| Id | CustomerId |
++----+------------+
+| 1  | 3          |
+| 2  | 1          |
++----+------------+
+例如给定上述表格，你的查询应返回：
+
++-----------+
+| Customers |
++-----------+
+| Henry     |
+| Max       |
++-----------+
+
+_______________________________________________________________
+
+
+1.NOT IN:
+
+SELECT Customers.Name as Customers
+FROM Customers
+WHERE Customers.Id
+NOT IN
+(
+   SELECT CustomerId FROM Orders
+);
+
+
+
+2.LEFT JOIN:
+左连接(以左表为核心):  从左表（table1）返回所有的行，即使右表（table2）中没有匹配。如果右表中没有匹配，则结果为 NULL。
+
+SELECT Customers.Name as Customers
+FROM Customers
+LEFT JOIN Orders
+ON Customers.Id=Orders.CustomerId
+WHERE Orders.CustomerId  is null;
+
+
+
+
+
+

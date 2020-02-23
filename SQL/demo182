@@ -1,0 +1,40 @@
+demo182
+
+#编写一个 SQL 查询，查找 Person 表中所有重复的电子邮箱。
++----+---------+
+| Id | Email   |
++----+---------+
+| 1  | a@b.com |
+| 2  | c@d.com |
+| 3  | a@b.com |
++----+---------+
+
+根据以上输入，你的查询应返回以下结果：
+
++---------+
+| Email   |
++---------+
+| a@b.com |
++---------+
+说明：所有电子邮箱都是小写字母。
+_______________________________________________________________
+
+1.group by和临时表
+SELECT Email From
+(
+   SELECT Email,count(Email) as num
+   FROM Person
+   GROUP BY Email
+)as NewPerson
+WHERE num>1;
+
+
+2.group by和 Having 
+//在 SQL 中增加 HAVING 子句原因是，WHERE 关键字无法与聚合函数一起使用。
+HAVING 子句可以筛选分组后的各组数据。
+
+
+SELECT Email 
+FROM Person
+GROUP BY Email
+HAVING COUNT(Email)>1;	
