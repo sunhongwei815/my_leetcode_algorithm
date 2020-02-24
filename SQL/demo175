@@ -27,6 +27,9 @@ FirstName, LastName, City, State
 
 
 _______________________________________________________________
+
+
+
 连接时保证一表存在，用left(right) join ... on...
 
 SELECT Person.FirstName,Person.LastName,Address.City,Address.State 
